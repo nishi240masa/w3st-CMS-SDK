@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "target": "ES2015",
+      "module": "ESNext",
+      "declaration": true,
+      "outDir": "./lib",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true,
+      "moduleResolution": "bundler",
+      "lib": ["ES2015", "DOM"],
+      "types": ["jest"],
+      "ignoreDeprecations": "6.0"
+    },
+  "include": ["src", "test"],
+  "exclude": ["node_modules", "lib"]
+}
