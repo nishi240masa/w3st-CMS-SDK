@@ -1,4 +1,4 @@
-# @w3st/cms-sdk 設計書
+# w3st-cms-sdk 設計書
 
 GUIで作成・登録したコンテンツを、フロントエンドから型安全に利用するためのTypeScript SDK。
 
@@ -16,7 +16,7 @@ npx @w3st/cli pull
 
 **ステップ2：クライアントの初期化**
 ```typescript
-import { createClient } from '@w3st/cms-sdk';
+import { createClient } from 'w3st-cms-sdk';
 
 export const cms = createClient({
   baseURL: 'https://api.your-project.w3st.io',
