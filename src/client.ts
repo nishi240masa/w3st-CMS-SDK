@@ -12,7 +12,6 @@ export interface CMSClient {
 interface Collection {
   id: number;
   name: string;
-  api_name: string;
 }
 
 export interface ContentAPI<T> {
@@ -39,7 +38,7 @@ class ContentAPIImpl<T> implements ContentAPI<T> {
     const response = await this.client.get('/collections');
     const collections: Collection[] = response.data;
 
-    const collection = collections.find(c => c.api_name === this.collectionName);
+    const collection = collections.find(c => c.name === this.collectionName);
     if (!collection) {
       throw new Error(`Collection with API name '${this.collectionName}' not found`);
     }
