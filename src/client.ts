@@ -9,6 +9,12 @@ export interface CMSClient {
   content<T>(name: string): ContentAPI<T>;
 }
 
+interface Collection {
+  id: number;
+  name: string;
+  api_name: string;
+}
+
 export interface ContentAPI<T> {
   findMany(options?: FindManyOptions): Promise<T[]>;
   create(data: Record<string, any>): Promise<T>;
@@ -21,15 +27,36 @@ export interface FindManyOptions {
 }
 
 class ContentAPIImpl<T> implements ContentAPI<T> {
+  private collectionId: number | null = null;
+
   constructor(private client: AxiosInstance, private collectionName: string) {}
 
+  private async getCollectionId(): Promise<number> {
+    if (this.collectionId !== null) {
+      return this.collectionId;
+    }
+
+    const response = await this.client.get('/collections');
+    const collections: Collection[] = response.data;
+
+    const collection = collections.find(c => c.api_name === this.collectionName);
+    if (!collection) {
+      throw new Error(`Collection with API name '${this.collectionName}' not found`);
+    }
+
+    this.collectionId = collection.id;
+    return this.collectionId;
+  }
+
   async findMany(options?: FindManyOptions): Promise<T[]> {
-    const response = await this.client.get(`/content/${this.collectionName}`, { params: options });
+    const collectionId = await this.getCollectionId();
+    const response = await this.client.get(`/collections/${collectionId}/entries`, { params: options });
     return response.data;
   }
 
   async create(data: Record<string, any>): Promise<T> {
-    const response = await this.client.post(`/content/${this.collectionName}`, data);
+    const collectionId = await this.getCollectionId();
+    const response = await this.client.post(`/collections/${collectionId}/entries`, { data });
     return response.data;
   }
 }
