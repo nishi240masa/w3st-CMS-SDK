@@ -1,6 +1,6 @@
 {
   "name": "w3st-cms-sdk",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "TypeScript SDK for w3st CMS",
   "main": "lib/index.js",
   "types": "lib/src/index.d.ts",
