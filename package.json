@@ -4,23 +4,19 @@
   "description": "TypeScript SDK for w3st CMS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "lib/",
+    "bin/",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "tsc && rollup -c",
     "test": "jest",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "axios": "^1.6.0"
-  },
-  "devDependencies": {
-    "@rollup/plugin-typescript": "^11.0.0",
-    "@types/jest": "^29.5.14",
-    "@types/node": "^20.0.0",
-    "jest": "^29.7.0",
-    "rollup": "^4.0.0",
-    "ts-jest": "^29.1.0",
-    "tslib": "^2.6.0",
-    "typescript": "^5.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.0.0",

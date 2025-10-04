@@ -7,6 +7,6 @@ module.exports = {
     format: 'cjs',
     sourcemap: true
   },
-  plugins: [typescript()],
+  plugins: [typescript({ tsconfig: './tsconfig.json' })],
   external: ['axios']
 };

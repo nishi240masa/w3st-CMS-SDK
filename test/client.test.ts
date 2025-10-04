@@ -10,7 +10,6 @@ describe('createClient', () => {
 
   it('should create a client', () => {
     const client = createClient({
-      baseURL: 'https://api.example.com',
       apiKey: 'test-key'
     });
     expect(client).toBeDefined();
@@ -19,7 +18,6 @@ describe('createClient', () => {
 
   it('should return content API', () => {
     const client = createClient({
-      baseURL: 'https://api.example.com',
       apiKey: 'test-key'
     });
     // Mock COLLECTION_IDS
@@ -32,7 +30,6 @@ describe('createClient', () => {
 
   it('should throw error for unknown collection', () => {
     const client = createClient({
-      baseURL: 'https://api.example.com',
       apiKey: 'test-key'
     });
     (types as any).COLLECTION_IDS = {};

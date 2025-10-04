@@ -8,7 +8,6 @@ GUIで作成・登録したコンテンツを、フロントエンドから型�
 ## 基本的な使い方
 **ステップ1：型定義の生成 (CLI)**
 ```bash
-export W3ST_BASE_URL='https://api.your-project.w3st.io'
 export W3ST_TOKEN='your-jwt-token'
 npx @w3st/cli pull
 ```
@@ -19,7 +18,6 @@ npx @w3st/cli pull
 import { createClient } from 'w3st-cms-sdk';
 
 export const cms = createClient({
-  baseURL: 'https://api.your-project.w3st.io',
   apiKey: 'your-public-api-key'
 });
 ```

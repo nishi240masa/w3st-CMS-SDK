@@ -2,8 +2,8 @@ import axios, { AxiosInstance } from 'axios';
 import { COLLECTION_IDS } from './types';
 
 export interface ClientConfig {
-  baseURL: string;
   apiKey: string;
+  baseURL?: string;
 }
 
 export interface CMSClient {
@@ -37,7 +37,7 @@ class ContentAPIImpl<T> implements ContentAPI<T> {
 
 export function createClient(config: ClientConfig): CMSClient {
   const client = axios.create({
-    baseURL: config.baseURL,
+    baseURL: config.baseURL || 'http://localhost:8080',
     headers: {
       'X-API-Key': config.apiKey
     }
