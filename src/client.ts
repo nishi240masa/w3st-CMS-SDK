@@ -2,6 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 
 export interface ClientConfig {
   apiKey: string;
+  baseURL?: string;
 }
 
 export interface CMSClient {
@@ -35,7 +36,7 @@ class ContentAPIImpl<T> implements ContentAPI<T> {
 
 export function createClient(config: ClientConfig): CMSClient {
   const client = axios.create({
-    baseURL: 'https://api.w3st.io',
+    baseURL: config.baseURL || 'https://api.w3st.io',
     headers: {
       'X-API-Key': config.apiKey
     }
