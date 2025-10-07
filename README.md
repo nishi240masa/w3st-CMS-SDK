@@ -1,4 +1,4 @@
-# w3st-cms-sdk 設計書
+# @w3st/cms-sdk 設計書
 
 GUIで作成・登録したコンテンツを、フロントエンドから型安全に利用するためのTypeScript SDK。
 
@@ -8,14 +8,14 @@ GUIで作成・登録したコンテンツを、フロントエンドから型�
 ## 基本的な使い方
 **ステップ1：型定義の生成 (CLI)**
 ```bash
-export W3ST_TOKEN='your-jwt-token'
+export W3ST_TOKEN='your-public-api-key'
 npx @w3st/cli pull
 ```
-これにより、`src/w3st-types.ts` と `src/types.ts` の `COLLECTION_IDS` が更新。
+これにより、`src/w3st-types.ts` が更新されます。コレクションIDは動的にAPIから取得するため、`COLLECTION_IDS` 定数は不要です。
 
 **ステップ2：クライアントの初期化**
 ```typescript
-import { createClient } from 'w3st-cms-sdk';
+import { createClient } from '@w3st/cms-sdk';
 
 export const cms = createClient({
   apiKey: 'your-public-api-key'
@@ -59,3 +59,5 @@ export default async function BlogPage() {
 - `cms.content<T>('api-name')` で型安全アクセス。
 - `populate` でリレーション解決。
 - GUI投稿で即時反映。
+- マルチテナント対応: APIキーから自動でプロジェクト特定。
+- 読み取り専用API: SDK は基本的にデータ取得のみサポートします。内部的に `create()` メソッドは開発者向けに残していますが、一般公開ドキュメントでは案内しません（運用上は GUI 側の POST `/api/collections/{collectionId}/entries` を利用してください）。

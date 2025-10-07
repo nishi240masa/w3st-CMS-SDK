@@ -10,7 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "moduleResolution": "bundler",
-    "lib": ["ES2015", "DOM"],
+    "lib": ["ES2016", "DOM"],
     "types": ["jest"]
   },
 "include": ["src", "test"],

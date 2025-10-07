@@ -8,5 +8,5 @@ module.exports = {
     sourcemap: true
   },
   plugins: [typescript({ tsconfig: './tsconfig.json' })],
-  external: ['axios']
+  external: ['axios', 'jsonwebtoken']
 };
